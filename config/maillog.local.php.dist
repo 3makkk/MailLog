@@ -1,0 +1,7 @@
+<?php
+return array(
+    'mail_log' => array(
+        'to' => array('foo@bar.com'),
+        'subject' => 'Error Log',
+    ),
+);
