@@ -27,8 +27,12 @@ class Bootstrap
 
     public static function chroot()
     {
-        $rootPath = dirname(static::findParentPath('module'));
-        chdir($rootPath);
+        if(static::findParentPath('module')) {
+            $rootPath = dirname(static::findParentPath('module'));
+            chdir($rootPath);
+        }
+
+        chdir('../');
     }
 
     /**
@@ -40,7 +44,8 @@ class Bootstrap
         if (($path = static::findParentPath('vendor'))) {
             $zf2ModulePaths[] = $path;
         }
-        if (($path = static::findParentPath('module')) !== $zf2ModulePaths[0]) {
+
+        if (($path = static::findParentPath('module')) !== $zf2ModulePaths[0] && $path !== false) {
             $zf2ModulePaths[] = $path;
         }
 
