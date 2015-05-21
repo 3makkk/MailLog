@@ -30,9 +30,10 @@ class Bootstrap
         if(static::findParentPath('module')) {
             $rootPath = dirname(static::findParentPath('module'));
             chdir($rootPath);
+        } else {
+            chdir('../');
         }
 
-        chdir('../');
     }
 
     /**
