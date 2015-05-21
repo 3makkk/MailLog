@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/3makkk/MailLog.svg)](https://travis-ci.org/3makkk/MailLog)
+
 Mail Log
 ========
 
