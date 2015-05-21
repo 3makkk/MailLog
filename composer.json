@@ -11,5 +11,13 @@
             "name": "Sven Friedemann",
             "email": "sven@erstellbar.de"
         }
-    ]
+    ],
+     "autoload": {
+        "psr-0": {
+            "MailLog": "src/"
+        },
+        "classmap": [
+            "./Module.php"
+        ]
+    }
 }
