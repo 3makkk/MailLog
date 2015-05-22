@@ -56,7 +56,7 @@ class Bootstrap
                 'module_paths' => $zf2ModulePaths,
             ),
             'modules' => array(
-                'Soflomo\\Mail',
+                'AcMailer',
                 'MailLog'
             )
         );

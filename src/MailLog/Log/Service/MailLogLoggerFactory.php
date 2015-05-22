@@ -2,6 +2,7 @@
 
 namespace MailLog\Log\Service;
 
+use AcMailer\Service\MailService;
 use Zend\Log\Logger;
 use Zend\Log\Writer\Mail;
 use Zend\ServiceManager\FactoryInterface;
@@ -25,8 +26,11 @@ class MailLogLoggerFactory implements FactoryInterface {
         $configArray = $serviceLocator->get('Config');
         $mailConfig = $configArray['mail_log'];
 
-        $transport = $serviceLocator->get('Soflomo\Mail\Transport');
-        $message   = $serviceLocator->get('Soflomo\Mail\Message');
+        /** @var $mailService MailService */
+        $mailService = $serviceLocator->get('AcMailer\Service\MailService');
+
+        $message = $mailService->getMessage();
+        $transport = $mailService->getTransport();
 
         if(!empty($mailConfig['to'])) {
             $message->setTo($mailConfig['to']);

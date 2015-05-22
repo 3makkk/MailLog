@@ -22,7 +22,7 @@ Add "3makkk\mail-log" to your composer.json file and update your dependencies.
 Requirements
 ------------
 
-MailLog uses *soflomo/mail* to send mails. To configure soflomo/mail follow these [constructions](https://github.com/juriansluiman/Soflomo-Mail).
+MailLog uses *acelaya/zf2-acmailer* to send mails. To configure acelaya/zf2-acmailer follow these [constructions](https://github.com/acelaya/ZF2-AcMailer).
 
 Usage
 -----

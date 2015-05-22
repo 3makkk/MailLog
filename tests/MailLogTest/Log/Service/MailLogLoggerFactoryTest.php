@@ -82,10 +82,6 @@ class MailLogLoggerFactoryTest extends \PHPUnit_Framework_TestCase
 
     protected function getLoggerMock(ServiceManager $serviceManager)
     {
-        $serviceManager->setAllowOverride(true);
-        $serviceManager->setInvokableClass('Soflomo\Mail\DefaultMessage', 'Zend\Mail\Message');
-        $serviceManager->setInvokableClass('Soflomo\Mail\DefaultTransport', 'MailLogTest\Log\Asset\SimpleTransport');
-        $serviceManager->setAllowOverride(false);
         $service = $serviceManager->get('MailLog\Logger');
 
         return $service;
