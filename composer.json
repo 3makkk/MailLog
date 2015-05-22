@@ -2,7 +2,6 @@
     "name": "3makkk/mail-log",
     "description": "Module for Zend Framework 2 for sending error messages via mail.",
     "require": {
-        "soflomo/mail": "^0.3.2",
         "zendframework/zendframework": "^2.4",
         "acelaya/zf2-acmailer": "~4.0"
     },
