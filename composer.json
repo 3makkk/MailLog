@@ -3,7 +3,7 @@
     "description": "Module for Zend Framework 2 for sending error messages via mail.",
     "require": {
         "zendframework/zendframework": "^2.4",
-        "acelaya/zf2-acmailer": "~4.0"
+        "acelaya/zf2-acmailer": "~5.0"
     },
     "license": "MIT",
     "authors": [
