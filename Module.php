@@ -2,6 +2,7 @@
 namespace MailLog;
 
 
+use MailLog\Log\Logger;
 use Zend\Mvc\MvcEvent;
 
 class Module
@@ -24,6 +25,12 @@ class Module
 
     public function onBootstrap(MvcEvent $e)
     {
+        $serviceManager = $e->getApplication()->getServiceManager();
+        $logger = $serviceManager->get('MailLog\Logger');
+
+        Logger::registerFatalErrorShutdownFunction($logger);
+        Logger::registerErrorHandler($logger);
+
         $eventManager = $e->getApplication()->getEventManager();
         $eventManager->attach('dispatch.error', function($event) {
             $exception = $event->getResult()->exception;
