@@ -4,7 +4,8 @@ namespace MailLog\Log\Service;
 
 use AcMailer\Service\MailService;
 use Zend\Log\Logger;
-use Zend\Log\Writer\Mail;
+use Zend\Log\Writer\Mail as MailLogWriter;
+use Zend\Log\Writer\Stream;
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
@@ -36,11 +37,11 @@ class MailLogLoggerFactory implements FactoryInterface {
             $message->setTo($mailConfig['to']);
         }
 
-        if(!empty($mailConfig['subject'])) {
-            $message->setSubject($mailConfig['subject']);
-        }
+        $writer = new MailLogWriter($message, $transport);
 
-        $writer = new Mail($message, $transport);
+        if(!empty($mailConfig['subject'])) {
+            $writer->setSubjectPrependText($mailConfig['subject']);
+        }
 
         $logger = new Logger();
         $logger->addWriter($writer);
