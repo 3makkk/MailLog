@@ -8,7 +8,7 @@ Created by Sven Friedemann
 Introduction
 ------------
 
-Mail Log is a module for Zend Framework 2 for sending error messages via mail.
+Module for Zend Framework 2 to log errors and exceptions via mail.
 
 Installation
 ------------
