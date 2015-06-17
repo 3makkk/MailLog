@@ -2,10 +2,8 @@
 
 namespace MailLogTest;
 
-use Zend\Loader\AutoloaderFactory;
 use Zend\Mvc\Service\ServiceManagerConfig;
 use Zend\ServiceManager\ServiceManager;
-use RuntimeException;
 
 error_reporting(E_ALL | E_STRICT);
 chdir(__DIR__);
@@ -21,19 +19,16 @@ class Bootstrap
     {
         static::initAutoloader();
         static::getServiceManager();
-
-
     }
 
     public static function chroot()
     {
-        if(static::findParentPath('module')) {
+        if (static::findParentPath('module')) {
             $rootPath = dirname(static::findParentPath('module'));
             chdir($rootPath);
         } else {
             chdir('../');
         }
-
     }
 
     /**
@@ -41,7 +36,7 @@ class Bootstrap
      */
     public static function getServiceManager()
     {
-        $zf2ModulePaths = array(dirname(dirname(__DIR__)));
+        $zf2ModulePaths = [dirname(dirname(__DIR__))];
         if (($path = static::findParentPath('vendor'))) {
             $zf2ModulePaths[] = $path;
         }
@@ -51,15 +46,15 @@ class Bootstrap
         }
 
         // use ModuleManager to load this module and it's dependencies
-        $config = array(
-            'module_listener_options' => array(
+        $config = [
+            'module_listener_options' => [
                 'module_paths' => $zf2ModulePaths,
-            ),
-            'modules' => array(
+            ],
+            'modules' => [
                 'AcMailer',
                 'MailLog'
-            )
-        );
+            ]
+        ];
 
         $serviceManager = new ServiceManager(new ServiceManagerConfig());
         $serviceManager->setService('ApplicationConfig', $config);
@@ -76,7 +71,6 @@ class Bootstrap
         if (file_exists($vendorPath . '/autoload.php')) {
             include $vendorPath . '/autoload.php';
         }
-
     }
 
     protected static function findParentPath($path)
