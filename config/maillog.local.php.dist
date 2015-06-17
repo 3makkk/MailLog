@@ -1,7 +1,104 @@
 <?php
-return array(
-    'mail_log' => array(
-        'to' => array('foo@bar.com'),
-        'subject' => 'Error Log',
-    ),
-);
+return [
+'log' => [
+    /*
+     *  Log Exceptions?
+     *  Default value is true
+     */
+    'log_exceptions' => true,
+
+    /*
+     * Log PHP Errors?
+     * Default value is true
+     */
+    'log_errors' => true,
+
+    /*
+     *  Log Fatal PHP Errors
+     * Default value is true
+     */
+    'log_fatal_errors' => true,
+
+    /*
+     * Log Writers
+     *
+     * You can define any class implementing Zend\Log\Writer\WriterInterface,
+     * either the class fully qualified name or the instance to be used.
+     * For standard writers, you can use aliases as name
+     *
+     * The default writer is mail
+     *
+     *      - chromephp      => Zend\Log\Writer\ChromePhp
+     *      - db             => Zend\Log\Writer\Db
+     *      - fingerscrossed => Zend\Log\Writer\FingersCrossed
+     *      - firephp        => Zend\Log\Writer\FirePhp
+     *      - mail           => Zend\Log\Writer\Mail
+     *      - mock           => Zend\Log\Writer\Mock
+     *      - noop           => Zend\Log\Writer\Noop
+     *      - stream         => Zend\Log\Writer\Stream
+     *      - syslog         => Zend\Log\Writer\Syslog
+     *      - zendmonitor    => Zend\Log\Writer\ZendMonitor
+     */
+        'writers' =>[
+            [
+                'name' => 'mail',
+                'options' => [
+
+                    /*
+                     * Subject Predend Text
+                     *
+                     * Allows caller to have the mail subject dynamically set to contain the
+                     * entry counts per-priority level.
+                     *
+                     * Sets the text for use in the subject, with entry counts per-priority
+                     * level appended to the end.  Since a Zend\Mail\Message subject can only be set
+                     * once, this method cannot be used if the Zend\Mail\Message object already has a
+                     * subject set.
+                     */
+                    'subject_prepend_text' => 'Error Log',
+
+                    /*
+                     * Mail Options
+                     * @see Zend\Mail\Message
+                     */
+                    'mail' => [
+                        'to' => 'log@erkundbar.de',
+                    ],
+
+                    /*
+                     * If you use mail writer you can define a transport method
+                     * You can define any class implementing Zend\Mail\Transport\Transportinterface
+                     * For standard transports, you can use aliases as type
+                     *
+                     *       - file      => Zend\Mail\Transport\File,
+                     *       - inmemory  => Zend\Mail\Transport\InMemory,
+                     *       - memory    => Zend\Mail\Transport\InMemory,
+                     *       - null      => Zend\Mail\Transport\InMemory,
+                     *       - sendmail  => Zend\Mail\Transport\Sendmail,
+                     *       - smtp      => Zend\Mail\Transport\Smtp,
+                     *
+                     * Default trnasport is smtp
+                     */
+                    'transport' => [
+                        'type' => 'smtp',
+
+                        /*
+                         * Transport Options
+                         * @see Zend\Mail\Transport\FileOptions
+                         * @see Zend\Mail\Transport\SmtpOptions
+                         */
+                        'options' => [
+                            'host' => 'w01230ae.kasserver.com',
+                            'connection_class' => 'login',
+                            'connection_config' => [
+                                'username' => 'm0334687',
+                                'smtp_password' => '2eF9oRYLZoBbEGp7',
+                                'ssl' => 'tls'
+                            ]
+                        ],
+                    ]
+                ]
+            ]
+        ]
+    ]
+];

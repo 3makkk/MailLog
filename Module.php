@@ -1,8 +1,7 @@
 <?php
 namespace MailLog;
 
-
-use MailLog\Log\Logger;
+use Zend\Log\Logger;
 use Zend\Mvc\MvcEvent;
 
 class Module
@@ -14,31 +13,45 @@ class Module
 
     public function getAutoloaderConfig()
     {
-        return array(
-            'Zend\Loader\StandardAutoloader' => array(
-                'namespaces' => array(
+        return [
+            'Zend\Loader\StandardAutoloader' => [
+                'namespaces' => [
                     __NAMESPACE__ => __DIR__ . '/src/' . __NAMESPACE__,
-                ),
-            ),
-        );
+                ],
+            ],
+        ];
     }
 
     public function onBootstrap(MvcEvent $e)
     {
         $serviceManager = $e->getApplication()->getServiceManager();
-        $logger = $serviceManager->get('MailLog\Logger');
+        $logger = $serviceManager->get('Logger');
+        $config = $serviceManager->get('config');
 
-        Logger::registerFatalErrorShutdownFunction($logger);
-        Logger::registerErrorHandler($logger);
+        if (isset($config['log']['log_fatal_errors']) && $config['log']['log_fatal_errors'] === true) {
+            Logger::registerFatalErrorShutdownFunction($logger);
+        }
+        if (isset($config['log']['log_errors']) && $config['log']['log_fatal_errors'] === true) {
+            Logger::registerErrorHandler($logger);
+        }
 
-        $eventManager = $e->getApplication()->getEventManager();
-        $eventManager->attach('dispatch.error', function($event) {
-            $exception = $event->getResult()->exception;
-            if ($exception) {
-                $sm = $event->getApplication()->getServiceManager();
-                $service = $sm->get('MailLog\Logger');
-                $service->err($exception);
-            }
-        });
+        if (isset($config['log']['log_exceptions']) && $config['log']['log_fatal_errors'] === true) {
+            $eventManager = $e->getApplication()->getEventManager();
+            $eventManager->attach('dispatch.error', [$this, 'logException']);
+        }
+    }
+
+    /**
+     * Log Exception on mvc error event
+     * @param $event
+     */
+    protected function logException($event)
+    {
+        $exception = $event->getResult()->exception;
+        if ($exception) {
+            $sm = $event->getApplication()->getServiceManager();
+            $service = $sm->get('Logger');
+            $service->err($exception);
+        }
     }
 }
