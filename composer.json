@@ -4,11 +4,11 @@
     "repositories": [
       {
         "type": "vcs",
-        "url": "https://github.com/3makkk/zend-log.git"
+        "url": "https://github.com/3makkk/zend-log"
       }
     ],
     "require": {
-        "zendframework/zend-log": "dev-patch-1",
+        "zendframework/zend-log": "dev-patch-1 as 2.5.x-dev",
         "zendframework/zendframework": "^2.4"
     },
     "require-dev": {
