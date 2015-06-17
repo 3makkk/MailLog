@@ -88,11 +88,11 @@ return [
                          * @see Zend\Mail\Transport\SmtpOptions
                          */
                         'options' => [
-                            'host' => 'w01230ae.kasserver.com',
+                            'host' => 'foo.com',
                             'connection_class' => 'login',
                             'connection_config' => [
-                                'username' => 'm0334687',
-                                'smtp_password' => '2eF9oRYLZoBbEGp7',
+                                'username' => 'foo',
+                                'smtp_password' => 'bar',
                                 'ssl' => 'tls'
                             ]
                         ],
