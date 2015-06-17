@@ -8,7 +8,7 @@ Created by Sven Friedemann
 Introduction
 ------------
 
-Module for Zend Framework 2 to log errors and exceptions via mail.
+Module for Zend Framework 2 to log errors and exceptions.
 
 Installation
 ------------
@@ -22,7 +22,11 @@ Add "3makkk\mail-log" to your composer.json file and update your dependencies.
 Requirements
 ------------
 
-MailLog uses *acelaya/zf2-acmailer* to send mails. To configure acelaya/zf2-acmailer follow these [constructions](https://github.com/acelaya/ZF2-AcMailer).
+Zend Framework 2
+
+Configuration
+-------------
+See ```[config/maillog.local.php.dist](config/maillog.local.php.dist).
 
 Usage
 -----
