@@ -8,8 +8,8 @@
       }
     ],
     "require": {
-        "zendframework/zendframework": "^2.4",
-        "zendframework/zend-log": "dev-master"
+        "zendframework/zend-log": "dev-patch-1",
+        "zendframework/zendframework": "^2.4"
     },
     "require-dev": {
       "fabpot/php-cs-fixer": "1.7.*",
