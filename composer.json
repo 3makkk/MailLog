@@ -1,14 +1,8 @@
 {
     "name": "3makkk/mail-log",
     "description": "Module for Zend Framework 2 to log errors and exceptions",
-    "repositories": [
-      {
-        "type": "vcs",
-        "url": "https://github.com/3makkk/zend-log"
-      }
-    ],
     "require": {
-        "zendframework/zend-log": "dev-patch-1 as 2.5.x-dev",
+        "zendframework/zend-log": "dev-master",
         "zendframework/zendframework": "^2.4"
     },
     "require-dev": {

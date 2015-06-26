@@ -45,7 +45,7 @@ class Module
      * Log Exception on mvc error event
      * @param $event
      */
-    protected function logException($event)
+    public function logException($event)
     {
         $exception = $event->getResult()->exception;
         if ($exception) {
