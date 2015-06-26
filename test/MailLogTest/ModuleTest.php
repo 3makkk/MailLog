@@ -7,13 +7,13 @@
 
 namespace MailLogTest;
 
-
 use MailLog\Module;
 use Zend\Log\Logger;
 use Zend\Mvc\Application;
 use Zend\Mvc\MvcEvent;
 
-class ModuleTest extends \PHPUnit_Framework_TestCase {
+class ModuleTest extends \PHPUnit_Framework_TestCase
+{
 
     /**
      * @var Module
@@ -45,7 +45,6 @@ class ModuleTest extends \PHPUnit_Framework_TestCase {
         $this->event->expects($this->any())
             ->method('getApplication')
             ->willReturn($applicationMock);
-
     }
 
     public function testOnBootstrapFatalErrorLogOption()
@@ -75,6 +74,4 @@ class ModuleTest extends \PHPUnit_Framework_TestCase {
         $logger = new Logger();
         $this->assertFalse($logger::registerErrorHandler($logger));
     }
-
-
 }
