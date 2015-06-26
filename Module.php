@@ -31,11 +31,11 @@ class Module
         if (isset($config['log']['log_fatal_errors']) && $config['log']['log_fatal_errors'] === true) {
             Logger::registerFatalErrorShutdownFunction($logger);
         }
-        if (isset($config['log']['log_errors']) && $config['log']['log_fatal_errors'] === true) {
+        if (isset($config['log']['log_errors']) && $config['log']['log_errors'] === true) {
             Logger::registerErrorHandler($logger);
         }
 
-        if (isset($config['log']['log_exceptions']) && $config['log']['log_fatal_errors'] === true) {
+        if (isset($config['log']['log_exceptions']) && $config['log']['log_exceptions'] === true) {
             $eventManager = $e->getApplication()->getEventManager();
             $eventManager->attach('dispatch.error', [$this, 'logException']);
         }
