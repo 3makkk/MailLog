@@ -2,7 +2,7 @@
     "name": "3makkk/mail-log",
     "description": "Module for Zend Framework 2 to log errors and exceptions",
     "require": {
-        "zendframework/zend-log": "dev-master",
+        "zendframework/zend-log": "^2.5.2",
         "zendframework/zendframework": "^2.4"
     },
     "require-dev": {
